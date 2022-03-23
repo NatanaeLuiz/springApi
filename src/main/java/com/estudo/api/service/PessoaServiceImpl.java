@@ -8,6 +8,8 @@ import com.estudo.api.repository.PessoaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class PessoaServiceImpl implements PessoaService{
@@ -25,5 +27,10 @@ public class PessoaServiceImpl implements PessoaService{
 
         PessoaDto pessoaDtoTransformado = pessoaParaPessoaDto.parse(pessoaSalva);//Retorna Pessoa Com Id
         return pessoaDtoTransformado;
+    }
+
+    @Override
+    public Optional<Pessoa> retornarUmaPessoa(Long id) {
+        return pessoaRepository.findById(id);
     }
 }
