@@ -3,6 +3,7 @@ package com.estudo.api.controller;
 import com.estudo.api.entity.Pessoa;
 import com.estudo.api.entity.PessoaDto;
 import com.estudo.api.service.PessoaService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,8 @@ public class PessoaController {
 
     private final PessoaService pessoaService;
 
+    @ApiOperation("Metodo para criação")
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "create")
     public ResponseEntity<PessoaDto> salvaPessoa(@RequestBody PessoaDto pessoaDto) {
         PessoaDto p = pessoaService.salvarPessoa(pessoaDto);
