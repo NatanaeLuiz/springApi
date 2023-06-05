@@ -15,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PessoaServiceImpl implements PessoaService{
 
+    //@Autorired
     private final PessoaDtoParaPessoa pessoaDtoParaPessoa;
     private final PessoaRepository pessoaRepository;
     private final PessoaParaPessoaDto pessoaParaPessoaDto;
@@ -22,12 +23,13 @@ public class PessoaServiceImpl implements PessoaService{
     @Override
     public PessoaDto salvarPessoa(PessoaDto pessoaDto) {
 
-        Pessoa pessoa = pessoaDtoParaPessoa.parse(pessoaDto);//Pessoa sem id
+        return pessoaParaPessoaDto.parse(pessoaRepository.save(pessoaDtoParaPessoa.parse(pessoaDto)));//Retorna Pessoa Com Id
 
-        Pessoa pessoaSalva = pessoaRepository.save(pessoa);//Pessoa salva
+    }
 
-        PessoaDto pessoaDtoTransformado = pessoaParaPessoaDto.parse(pessoaSalva);//Retorna Pessoa Com Id
-        return pessoaDtoTransformado;
+    @Override
+    public Optional<Pessoa> salvarPessoa2(Pessoa pessoa) {
+        return Optional.of(pessoaRepository.save(pessoa));
     }
 
     @Override
