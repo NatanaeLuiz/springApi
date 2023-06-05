@@ -1,11 +1,11 @@
 package com.estudo.api.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.aspectj.bridge.Message;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -22,6 +22,7 @@ public class Pessoa implements Serializable {
     private Long id;
 
     @Column
+    @NotEmpty(message = "não deve estar vazio")
     private String nome;
 
     @Column

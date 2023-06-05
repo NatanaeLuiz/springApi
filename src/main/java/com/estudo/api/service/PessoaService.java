@@ -10,6 +10,8 @@ public interface PessoaService {
 
     PessoaDto salvarPessoa(PessoaDto pessoaDto);
 
+    Optional<Pessoa> salvarPessoa2(Pessoa pessoa);
+
     Optional<Pessoa> retornarUmaPessoa(Long id);
 
     List<Pessoa> retornarTodos();
