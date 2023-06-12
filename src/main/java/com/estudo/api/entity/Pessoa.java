@@ -2,6 +2,9 @@ package com.estudo.api.entity;
 
 import lombok.*;
 import org.aspectj.bridge.Message;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.context.annotation.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -27,6 +30,5 @@ public class Pessoa implements Serializable {
 
     @Column
     private int idade;
-
 
 }
